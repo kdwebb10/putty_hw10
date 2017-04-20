@@ -78,8 +78,8 @@ void ReadFile(char *file1, float data[])
 		}	
 	}
 	avg = max/x;
-	printf("Max height in feet is: %.2f\n", height);	//why *3.28?
-	printf("The average height in feet is: %.2f\n", avg);
+	printf("Max height in feet is: %.2f\n", height*3.28);	//3.28 = meters to feet conversion
+	printf("The average height in feet is: %.2f\n", avg*3.28);
 	printf("List of tsunamis with a height greater than average: \n");
 	
 	for(i = 0; i < x; i++)
