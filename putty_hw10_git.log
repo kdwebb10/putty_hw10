@@ -1,0 +1,122 @@
+commit 513c398e57e1bcbaa59d30a490a3c5e7405033e3
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Mon Apr 24 21:17:53 2017 -0600
+
+    Cleaning up
+
+commit d1bfe1ea2740ed2e896869a80a4875fc6a27b978
+Merge: 44c6fe7 909cb4f
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Mon Apr 24 20:49:35 2017 -0600
+
+    Merge Changes
+
+commit 44c6fe7c16bf9999e28db4f33fb1f77cdfb6cd66
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Mon Apr 24 20:46:49 2017 -0600
+
+    attempting to fix merge issues
+
+commit 5a3e8b3f42d401430bb9e5d39e4561505130b6db
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Mon Apr 24 20:41:49 2017 -0600
+
+    Ignore file
+
+commit b52ed583cc6bfdc5e03b1a86d0201e4e3f7aa7b8
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Mon Apr 24 20:37:52 2017 -0600
+
+    Working on functions
+
+commit 909cb4fb45d8b2cb13f044ab070c39becc9c3bb1
+Merge: 790bee7 fed1d5c
+Author: ChikereNjoku Chibuike <cchikerenjoku@weber.edu>
+Date:   Sun Apr 23 21:46:47 2017 -0600
+
+    Merge branch 'master' of https://github.com/kdwebb10/putty_hw10
+
+commit 790bee7b5b52eab7a9f9e6ea9d4c53b2263f0b05
+Author: ChikereNjoku Chibuike <cchikerenjoku@weber.edu>
+Date:   Sun Apr 23 21:46:09 2017 -0600
+
+    needs fixing
+
+commit fed1d5ca3f43ad3c890115bbfb46d6f24fd02ec3
+Author: braxtongreenwell <braxtongreenwell@mail.weber.edu>
+Date:   Wed Apr 19 20:36:42 2017 -0600
+
+    final commit fix
+
+commit 9495e591895e2b81657fbaf743c8ab89a78b212b
+Author: braxtongreenwell <braxtongreenwell@mail.weber.edu>
+Date:   Wed Apr 19 20:06:16 2017 -0600
+
+    committing .gitignore again
+
+commit f68cdaa70032b77affde17a56594aac576c39ff0
+Author: braxtongreenwell <braxtongreenwell@mail.weber.edu>
+Date:   Wed Apr 19 20:03:12 2017 -0600
+
+    final commit task2
+
+commit 005db977603d0d37d5b4ae23d76240c90c50024e
+Merge: a977bd1 533d842
+Author: braxtongreenwell <braxtongreenwell@mail.weber.edu>
+Date:   Wed Apr 19 07:37:15 2017 -0600
+
+    Merge branch 'master' of https://github.com/kdwebb10/putty_hw10
+
+commit a977bd1833a9eaf5a080bb659d10b6c286033f80
+Author: braxtongreenwell <braxtongreenwell@mail.weber.edu>
+Date:   Wed Apr 19 07:36:51 2017 -0600
+
+    dubugging task2
+
+commit 533d842b9f6d50b6c3b804eddbcb7f2f45a03442
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Tue Apr 18 14:55:15 2017 +0000
+
+    Working on bugs...
+
+commit f19afce375a9d0b4364a075b60231a15a30a16e3
+Author: braxtongreenwell <braxtongreenwell@mail.weber.edu>
+Date:   Sat Apr 15 23:23:23 2017 +0000
+
+    committing ReadFile function
+
+commit 51c5133a1e57a8e5e8d7d029bbca58198da77495
+Author: braxtongreenwell <braxtongreenwell@mail.weber.edu>
+Date:   Sat Apr 15 22:05:50 2017 +0000
+
+    adding .gitignore and usage function for task2
+
+commit cf60de12a574b407a5bd29f8654d23e2dfc29bf2
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Thu Apr 13 16:31:25 2017 +0000
+
+    Added Hugos File
+
+commit 1fad0b5cadbcddb70ce583d3418682d23aea15c6
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Thu Apr 13 15:50:00 2017 +0000
+
+    Created Vim
+
+commit 6961e03bcd6c3486668655b4a2ce91651993f3aa
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Thu Apr 13 15:49:55 2017 +0000
+
+    Created Vim
+
+commit c02356b092a6c443b3f92cf7788acb7bc23547b0
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Thu Apr 13 15:49:50 2017 +0000
+
+    Created Vim
+
+commit 62a86d65b7abce9663df8293f394589743b67692
+Author: kyle webb <kylewebb4@weber.edu>
+Date:   Thu Apr 13 15:44:03 2017 +0000
+
+    first commit
