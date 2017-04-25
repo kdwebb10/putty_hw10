@@ -15,26 +15,31 @@
 #include <stdlib.h>		/* Standard Library */
 #include <string.h>     /* Strings Library */
 
+#define NROWS 3
+#define NCOLS 4
 #define FILESIZE 81
 /* Function Prototypes */
 void Usage(char **info);
-void ReadFile(char *fName, unsigned int num[]);
-void MPEGVersion(arry);
+void ReadFile(char *file1, unsigned int num[]);
+void MPEGversion(unsigned int vers);
+void DispLayer(unsigned int val1);
+void SampleRate(unsigned int val2);
+
 /* Main Program */
 int main(int argc, char *argv[])
 {
-    char inF = (FILESIZE);
-    unsigned int array[FILESIZE];
-    char str[7] = "--help";
-
-    if(argc != 2 || (strcmp(argv[1], str) == 0))
+    unsigned int nums[FILESIZE];
+    if(argc != 2 || (strcmp(*(argv+1), "--help") == 0))
     {
-        Usage(&argv[0]);
+        Usage(argv);
     }
-    strcpy(inF, argv[1]);
-    ReadFile();
-    MPGVersion);
-
+    ReadFile(argv[1], nums);
+    for (int i = 0; i < NROWS; i++)
+    {
+    MPEGversion(nums[i]);
+    DispLayer(nums[i]);
+    SampleRate(nums[i]);
+    }
 	return 0;
 }
 /* Function Defenition */
@@ -57,143 +62,196 @@ void Usage ( char **info )
  * =====================================================================================
  */
 
-void ReadFile ( char *fileName, unsigned int num[] )
+void ReadFile ( char *file1, unsigned int num[] )
 {
-    int i = 0;
-    FILE *inFile;
-    inFile = fopen(fileName, "r");
+    int i = 0, j = 0;
+    unsigned int first[FILESIZE], second[FILESIZE], third[FILESIZE];
+    FILE *inFile = fopen(file1, "r");
+    char str1[8], str2[8], str3[8];
     if(inFile == NULL)
     {
+        printf("The file was not opened\n");
         exit(1);
     }
-    while(fscanf(inFile, "%X", &num[i])!= EOF)
+    while(i < NROWS)
     {
-        fgetc(inFile);
-        printf("%X", num[i]);
+        j = 0;
+        while(j < NCOLS)
+        {
+            switch (i)
+            {
+                case 0:
+                    {
+                        fscanf(inFile, "%x", &first[j]);
+                        break;
+                    }
+                case 1:
+                    {
+                        fscanf(inFile, "%x", &second[j]);
+                        break;
+                    }
+                case 2:
+                    {
+                        fscanf(inFile, "%x", &third[j]);
+                        break;
+                    }
+            }
+            fgetc(inFile);
+            j++;
+        }
         i++;
     }
+    sprintf(str1, "%x%x%x%x", first[0], first[1], first[2], first[3]);
+    sprintf(str2, "%x%x%x%x", second[0], second[1], second[2], second[3]);
+    sprintf(str1, "%x%x%x%x", third[0], third[1], third[2], third[3]);
+    num[0] = strtol(str1, NULL, 16);
+    num[1] = strtol(str2, NULL, 16);
+    num[3] = strtol(str3, NULL, 16);
+
     return;
 }		/* -----  end of function ReadFile  ----- */
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  MPEGVersion
- *  Description: Testing for the  MPEG version
+ *  Description: Function tests for witch MPEG Version
  * =====================================================================================
  */
-void MPEGVersion ( unsigned int data )
+void MPEGversion ( unsigned int vers )
 {
-    unsigned int speed, remander;
-    remander = data & 0x00180000;
-    remander >> 19;
-    speed = remander;
-    switch (remander)
+    vers = vers & 0x180000;
+    vers = vers >> 19;
+    printf("Your MPEG Version is:\n");
+
+    switch (vers)
     {
+        case 0:
+            printf("MPEG Version 2.5\n");
+            break;
+
         case 1:
-            printf("Your MPEG Version is: MPEG version 2.5\n");
+            printf("MPEG Version reserved\n");
             break;
 
         case 2:
-            printf("Your MPEG Version is: resurved\n");
-            break;
-
-        case 3:
-            printf("Your MPEG Version is: MPEG Version 2\n");
+            printf("MPEG Version 2\n");
             break;
 
         default:
-            printf("Your MPEG Version is: MPEG Version 1\n");
+            printf("MPEG VErson 1\n");
             break;
     }				/* -----  end switch  ----- */
-    remander = data & 0x00060000;
-    remander >> 19;
-    switch (remander)
-    {
-        case 1:
-            printf("Your Layer is: Reserved\n");
-            break;
-
-        case 2:
-            printf("Your Layer is: Layer 3\n");
-            break;
-
-        case 3:
-            printf("Your Layer is: Layer 2\n");
-            break;
-
-        default:
-            printf("Your Layer is: Layer 1\n");
-            break;
-    }				/* -----  end switch  ----- */
-    remander = data & 0x00000c00;
-    remander >> 7;
-    if(speed == 3)
-            {
-
-                switch (remander)
-                {
-                    case 1:
-                        printf("Your sampling rate is: 44100 Hz\n");
-                        break;
-
-                    case 2:
-                        printf("Your sampling rate is: 48000 Hz\n");
-                        break;
-
-                    case 3:
-                        printf("Your sampling rate is: 32000 Hz\n");
-                        break;
-
-                    default:
-                        printf("Your sampling rate is: reserv\n");
-                        break;
-                }				/* -----  end switch  ----- */
-            }
-    else if(speed == 2)
-    {
-
-        switch (remander)
-        {
-            case 1:
-                        printf("Your sampling rate is: 22050 Hz\n");
-                break;
-
-            case 2:
-                        printf("Your sampling rate is: 24000 Hz\n");
-                break;
-
-            case 3:
-                        printf("Your sampling rate is: 16000 Hz\n");
-                break;
-
-            default:
-                        printf("Your sampling rate is: reserv\n");
-                break;
-        }				/* -----  end switch  ----- */
-
-    }
-    else if(speed == 0)
-    {
-
-        switch (remander)
-        {
-            case 1:
-                        printf("Your sampling rate is: 11025 Hz\n");
-                break;
-
-            case 2:
-                        printf("Your sampling rate is: 12000 Hz\n");
-                break;
-
-            case 3:
-                        printf("Your sampling rate is: 8000 Hz\n");
-                break;
-
-            default:
-                        printf("Your sampling rate is: reserv\n");
-                break;
-        }				/* -----  end switch  ----- */
-    }
     return;
 }		/* -----  end of function MPEGVersion  ----- */
 
+/*
+ * ===  FUNCTION  ======================================================================
+ *         Name:  DispLayer
+ *  Description: Tests for and displays what layer
+ * =====================================================================================
+ */
+void DispLayer (unsigned int lay)
+{
+    lay = lay & 0x60000;
+    lay = lay >> 17;
+    printf("Your Layer is:\n");
+    switch (lay)
+    {
+        case 0:
+            printf("Reserved\n");
+            break;
+
+        case 1:
+            printf("Three\n");
+            break;
+
+        case 2:
+            printf("Two\n");
+            break;
+
+        default:
+            printf("One\n");
+            break;
+    }				/* -----  end switch  ----- */
+    return;
+}		/* -----  end of function DispLayer  ----- */
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  DispRate
+ *  Description:  
+ * =====================================================================================
+ */
+void SampleRate (unsigned int val2)
+{
+    int rate = val2;
+    int mpeg = val2;
+
+    val2 = val2 & 0x00000C00;
+    val2 = val2 >> 10;
+
+    mpeg = mpeg & 0x180000;
+    mpeg = mpeg >> 19;
+
+    switch (val2)
+    {
+        case 0:
+            {
+                if (mpeg == 0)
+                {
+                    rate = 11025;
+                }
+                else if (mpeg == 2)
+                {
+                    rate = 22050;
+                }
+                else if (mpeg == 3)
+                {
+                    rate = 44100;
+                }
+                printf("[%d] %d Hz\n", val2, rate);
+                break;
+            }
+        case 1:
+            {
+                if (mpeg == 0)
+                {
+                    rate = 12000;
+                }
+                else if (mpeg == 2)
+                {
+                    rate = 24000;
+                }
+                else if (mpeg == 3)
+                {
+                    rate = 48000;
+                }
+                printf("[%d] %d Hz\n", val2, rate);
+                break;
+            }
+        case 2:
+            {
+                if (mpeg == 0)
+                {
+                    rate = 8000;
+                }
+                else if (mpeg == 2)
+                {
+                    rate = 16000;
+                }
+                else if (mpeg == 3)
+                {
+                    rate = 32000;
+                }
+                printf("[%d] %d Hz\n", val2, rate);
+                break;
+            }
+        default:
+            {
+                printf("[%d] Reserved\n", val2);
+                break;
+            }
+    }
+
+    return;
+}		/* -----  end of function DispRate  ----- */
 
