@@ -23,7 +23,7 @@ void Usage(char **info);
 void ReadFile(char *file1, unsigned int num[]);
 void MPEGversion(unsigned int vers);
 void DispLayer(unsigned int val1);
-void SampleRate(unsigned int val2);
+void SampleRate(unsigned int sam);
 
 /* Main Program */
 int main(int argc, char *argv[])
@@ -110,7 +110,7 @@ void ReadFile ( char *file1, unsigned int num[] )
 
     return;
 }		/* -----  end of function ReadFile  ----- */
-/* 
+/*
  * ===  FUNCTION  ======================================================================
  *         Name:  MPEGVersion
  *  Description: Function tests for witch MPEG Version
@@ -161,97 +161,94 @@ void DispLayer (unsigned int lay)
             break;
 
         case 1:
-            printf("Three\n");
+            printf("III\n");
             break;
 
         case 2:
-            printf("Two\n");
+            printf("II\n");
             break;
 
         default:
-            printf("One\n");
+            printf("I\n");
             break;
     }				/* -----  end switch  ----- */
     return;
 }		/* -----  end of function DispLayer  ----- */
 
-/* 
+/*
  * ===  FUNCTION  ======================================================================
- *         Name:  DispRate
- *  Description:  
+ *         Name:  SampleRate
+ *  Description:  Scans and tests for Hz
  * =====================================================================================
  */
-void SampleRate (unsigned int val2)
+void SampleRate (unsigned int sam)
 {
-    int rate = val2;
-    int mpeg = val2;
+    int mpeg = sam;
 
-    val2 = val2 & 0x00000C00;
-    val2 = val2 >> 10;
+    sam = sam & 0x00000C00;
+    sam = sam >> 10;
 
     mpeg = mpeg & 0x180000;
     mpeg = mpeg >> 19;
 
-    switch (val2)
+    printf("Your Sampling Rate is:\n");
+    switch (sam)
     {
         case 0:
             {
                 if (mpeg == 0)
                 {
-                    rate = 11025;
+                    printf("11025 Hz\n");
                 }
                 else if (mpeg == 2)
                 {
-                    rate = 22050;
+                    printf("22050 Hz\n");
                 }
                 else if (mpeg == 3)
                 {
-                    rate = 44100;
+                    printf("44100 Hz\n");
                 }
-                printf("[%d] %d Hz\n", val2, rate);
                 break;
             }
         case 1:
             {
                 if (mpeg == 0)
                 {
-                    rate = 12000;
+                    printf("12000 Hz\n");
                 }
                 else if (mpeg == 2)
                 {
-                    rate = 24000;
+                    printf("24000 Hz\n");
                 }
                 else if (mpeg == 3)
                 {
-                    rate = 48000;
+                    printf("48000 Hz\n");
                 }
-                printf("[%d] %d Hz\n", val2, rate);
                 break;
             }
         case 2:
             {
                 if (mpeg == 0)
                 {
-                    rate = 8000;
+                    printf("8000 Hz\n");
                 }
                 else if (mpeg == 2)
                 {
-                    rate = 16000;
+                    printf("16000 Hz\n");
                 }
                 else if (mpeg == 3)
                 {
-                    rate = 32000;
+                    printf("32000 Hz\n");
                 }
-                printf("[%d] %d Hz\n", val2, rate);
                 break;
             }
         default:
             {
-                printf("[%d] Reserved\n", val2);
+                printf("Reserved\n");
                 break;
             }
-    }
-
+    }				/* -----  end switch  ----- */
+    printf("\n");
     return;
 }		/* -----  end of function DispRate  ----- */
 
